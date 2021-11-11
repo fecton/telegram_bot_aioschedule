@@ -75,21 +75,29 @@ status_inline_keyboard = InlineKeyboardMarkup(
     inline_keyboard=[
         [
             InlineKeyboardButton(
-                text="Изменить значение",
+                text="✏️ Изменить значение",
                 callback_data=action_data.new(
                     action_choice="change",
                 )
             ),
             InlineKeyboardButton(
-                text="Прикрепить файл/фото",
+                text="🌄 Прикрепить фото",
                 callback_data=action_data.new(
-                    action_choice="attach_file",
+                    action_choice="attach_photo",
                 )
             )
         ],
         [
             InlineKeyboardButton(
-                text="Назад",
+                text="🪧 Статус",
+                callback_data=action_data.new(
+                    action_choice="status_day"
+                )
+            )
+        ],
+        [
+            InlineKeyboardButton(
+                text="🏮 Назад",
                 callback_data=action_data.new(
                     action_choice="go_back"
                 ),
@@ -98,4 +106,15 @@ status_inline_keyboard = InlineKeyboardMarkup(
     ]
 )
 
-
+cancel_keyboard = InlineKeyboardMarkup(
+    inline_keyboard=[
+        [
+            InlineKeyboardButton(
+                text="🏮 Назад",
+                callback_data=action_data.new(
+                    action_choice="cancel"
+                )
+            )
+        ]
+    ]
+)

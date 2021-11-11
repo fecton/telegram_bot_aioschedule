@@ -4,8 +4,9 @@ from .long_messages import content
 
 load_dotenv()  # Initialization
 
-DB_NAME = "list"  # Database name
+DB_NAME = "days_textes.sqlite3"  # Database name
 
 TOKEN = getenv("TOKEN")  # Get token
-SUPER_USERS = [int(getenv("OWNER"))]
+SUPER_USERS = [int(getenv("OWNER"))] # here is you (mean admin)
+GROUPS = [817810926] # here is your groups id
 
