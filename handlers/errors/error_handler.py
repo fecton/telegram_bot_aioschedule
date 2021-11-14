@@ -6,7 +6,15 @@ async def errors_handler(update, exception):
     from aiogram.utils.exceptions import (Unauthorized, InvalidQueryID, TelegramAPIError,
                                           CantDemoteChatCreator, MessageNotModified, MessageToDeleteNotFound,
                                           MessageTextIsEmpty, RetryAfter,
-                                          CantParseEntities, MessageCantBeDeleted, BadRequest, NetworkError)
+                                          CantParseEntities, MessageCantBeDeleted, BadRequest, NetworkError, ChatNotFound, MigrateToChat)
+
+    if isinstance(exception, MigrateToChat):
+        print("Chat was migrated! New id is : %s" % exception.migrate_to_chat_id)
+        return True
+
+    if isinstance(exception, ChatNotFound):
+        print("Chat is not found! Check GROUPS!")
+        return True
 
     if isinstance(exception, NetworkError):
         print("Connection was interrupted!")

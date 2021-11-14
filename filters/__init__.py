@@ -1,1 +1,2 @@
-from .is_admin_private import Is_Admin_Private, Is_Private
+from .isadminprivate import IsAdminPrivate, IsPrivate
+from .is_this_bot import IsThisBot
