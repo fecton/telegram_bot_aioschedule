@@ -32,9 +32,9 @@ async def send_action_keyboard(call: types.CallbackQuery, callback_data: dict, s
 async def send_action_keyboard(call: types.CallbackQuery, state: FSMContext):
     week_day = (await state.get_data("week_day"))["week_day"]
     await state.update_data(week_day=week_day)
-    
+
     # await state.update_data(week_day=week_day, action="change")
-    
+
     await call.message.edit_reply_markup()
     await call.message.edit_text("(%s) Введите ваш текст:" % eng_day_to_rus(week_day).upper())
     await call.message.edit_reply_markup(reply_markup=cancel_keyboard)
@@ -71,11 +71,11 @@ async def send_status_day(call: types.CallbackQuery, state: FSMContext):
         output_message = "День недели: %s\nТекст: %s\nФото: ❌" % (rus_week_day, day_text)
     else:
         output_message = "День недели: %s\nТекст: %s\nФото:" % (rus_week_day, day_text)
-        await call.message.answer_photo(photo_id)  
-    
+        await call.message.answer_photo(photo_id)
+
     await call.message.edit_reply_markup()
     await call.message.edit_text(output_message)
-    
+
     await state.reset_state(with_data=True)
 
 

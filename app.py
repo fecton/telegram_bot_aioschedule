@@ -13,15 +13,15 @@ from handlers import dp
 async def on_startup(dp: Dispatcher):
 	from utils.notify_admins import on_startup_notify
 	from utils.set_bot_commands import set_default_commands
-	
+
 	await set_default_commands(dp)
 	await on_startup_notify(dp)
 	asyncio.create_task(scheduler())
-	
+
 
 async def scheduler():
 	DAY_TIME = "12:00"
-	EVERYDAY_TIME = "14:00"
+	EVERYDAY_TIME = "14:26"
 	aioschedule.every().day.at(EVERYDAY_TIME).do(send_everyday)
 	aioschedule.every().monday.at(DAY_TIME).do(send_on_monday)
 	aioschedule.every().tuesday.at(DAY_TIME).do(send_on_tuesday)

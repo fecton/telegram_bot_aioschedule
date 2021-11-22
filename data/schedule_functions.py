@@ -7,22 +7,17 @@ async def send_day_message(week_day: str) -> None:
     info_about_day = DbCore().get_day_from_text_table(week_day)
     GROUPS = DbCore().get_all_groups()
 
-    message = info_about_day[1]
+    message_text = info_about_day[1]
     photo_id = info_about_day[2]
 
     for group_id in GROUPS:
-        if message.strip(" ") != "":
-            await bot.send_message(
-                group_id[0],
-                message
-            )
-            if photo_id:
-                await bot.send_photo(
-                    group_id[0],
-                    photo_id
-                )
+        if message_text.strip(" ") != "" and photo_id:
+            await bot.send_photo(chat_id=group_id[0], photo=photo_id, caption=message_text)
+        else:
+            if message_text.strip(" ") != "":
+                await bot.send_message(group_id[0], message_text)
 
-            print("%s's text was sent" % week_day.upper())
+        print("%s's text was sent" % week_day.upper())
 
 
 # async def test_message():
