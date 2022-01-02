@@ -14,7 +14,7 @@ async def on_startup(dp: Dispatcher):
 	from utils.notify_admins import on_startup_notify
 	from utils.set_bot_commands import set_default_commands
 
-	await set_default_commands(dp)
+	# await set_default_commands(dp)
 	await on_startup_notify(dp)
 	asyncio.create_task(scheduler())
 

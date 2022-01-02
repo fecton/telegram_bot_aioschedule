@@ -1,6 +1,5 @@
 from .functions import DbCore
 from loader import bot
-from aiogram.utils.exceptions import ChatNotFound
 
 
 async def send_day_message(week_day: str) -> None:
@@ -18,18 +17,6 @@ async def send_day_message(week_day: str) -> None:
                 await bot.send_message(group_id[0], message_text)
 
         print("%s's text was sent" % week_day.upper())
-
-
-# async def test_message():
-#     GROUPS = DbCore().get_all_groups()
-#     for i in GROUPS:
-#         try:
-#             await bot.send_message(
-#                 i[0],
-#                 "Тест каждые 5 секунд"
-#             )
-#         except ChatNotFound:
-#             print("Chat %s was not found! Check the GROUPS!" % i[0])
 
 
 async def send_everyday():

@@ -3,8 +3,9 @@ from data import DB_NAME
 import sqlite3
 from typing import Union
 
-
 def eng_day_to_rus(week_day: str) -> str:
+    "Translates week days to russian"
+
     week = {
         "everyday": "ежедневное",
         "monday": "понедельник",
@@ -33,6 +34,9 @@ def user_input(message: types.Message, command: str) -> str:
 
 
 class DbCore:
+    """
+    Interface for working with database
+    """
     def __init__(self) -> None:
         self._path_to_db = DB_NAME
 
