@@ -82,7 +82,8 @@ class DbCore:
 
         query = """
             CREATE TABLE `groups` (
-                id VARCHAR(128)  PRIMARY KEY NOT NULL
+                id         VARCHAR(128)  PRIMARY KEY NOT NULL,
+                group_name VARCHAR(128)  NOT NULL
             )
         """
         self.execute(query, commit=True)
@@ -96,13 +97,20 @@ class DbCore:
         """ % (text, day)
         self.execute(query, commit=True)
 
-    def insert_groups(self, groups_id: Union[list, tuple]):
-        query = """
-            INSERT INTO `groups` (id) VALUES (?)
-        """
+    # def insert_groups(self, groups_id: Union[list, tuple]):
+    #     query = """
+    #         INSERT INTO `groups` (id, group_name) VALUES (?,?)
+    #     """
 
-        for gid in groups_id:
-            self.execute(query, [gid], commit=True)
+    #     for gid in groups_id:
+    #         self.execute(query, [gid], commit=True)
+
+    def insert_groups(self, group_name, group_id) -> None:
+        query = """
+            INSERT INTO `groups` (id, group_name) VALUES (?, ?)
+        """
+        self.execute(query, (group_name, group_id), commit=True)
+
 
     def get_all_groups(self) -> list:
         query = """

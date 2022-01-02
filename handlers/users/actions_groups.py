@@ -26,9 +26,9 @@ async def reset_groups(message: types.Message):
 
 @dp.message_handler(IsAdminPrivate(), commands="show")
 async def show_groups(message: types.Message):
-    all_groups = "\n".join(list(map(lambda x: x[0], DbCore().get_all_groups())))
+    all_groups = "\n".join(list(map(lambda x: "%s : %s" % x, DbCore().get_all_groups()))).title()
     if all_groups:
-        await message.answer(all_groups)
+        await message.answer("Список групп:\n" + all_groups)
     else:
         await message.answer("Ещё нету групп!")
 
@@ -43,6 +43,6 @@ async def check_messages_for_days(message: types.Message):
             x = "❌"
         else:
             x = all_messages[day]
-        output_message += "🔰"+eng_day_to_rus(day)+": " + x + "\n"
+        output_message += "🔰 "+(eng_day_to_rus(day)).title()+": " + x + "\n"
 
     await message.answer(output_message)

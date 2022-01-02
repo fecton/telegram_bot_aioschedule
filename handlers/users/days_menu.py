@@ -7,7 +7,6 @@ from keyboard.inline.cb_data import *
 from loader import dp
 from data.functions import eng_day_to_rus, DbCore
 
-
 # send inline menu to user /days
 @dp.message_handler(IsAdminPrivate(), commands="menu")
 async def help_message(message: types.Message):

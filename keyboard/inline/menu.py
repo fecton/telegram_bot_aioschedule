@@ -1,5 +1,5 @@
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
-from keyboard.inline.cb_data import week_day, action_data
+from keyboard.inline.cb_data import week_day, action_data, add_group_id_data
 
 
 menu_inline_keyboard = InlineKeyboardMarkup(inline_keyboard=[
@@ -8,64 +8,60 @@ menu_inline_keyboard = InlineKeyboardMarkup(inline_keyboard=[
             text="Ежедневное",
             callback_data=week_day.new(
                 week_day="everyday",
-                
             )
         )
     ],
+
     [
         InlineKeyboardButton(
             text="Понедельник",
             callback_data=week_day.new(
                 week_day="monday",
-                
             )
         ),
         InlineKeyboardButton(
             text="Вторник",
             callback_data=week_day.new(
                 week_day="tuesday",
-                
             )
         ),
     ],
+
     [
         InlineKeyboardButton(
             text="Среда",
             callback_data=week_day.new(
                 week_day="wednesday",
-                
             )
         ),
         InlineKeyboardButton(
             text="Четверг",
             callback_data=week_day.new(
                 week_day="thursday",
-                
             )
         ),
     ],
+
     [
         InlineKeyboardButton(
             text="Пятница",
             callback_data=week_day.new(
                 week_day="friday",
-                
             )
         ),
         InlineKeyboardButton(
             text="Суббота",
             callback_data=week_day.new(
                 week_day="saturday",
-                
             )
         ),
     ],
+
     [
         InlineKeyboardButton(
             text="Воскресенье",
             callback_data=week_day.new(
                 week_day="sunday",
-                
             )
         ),
     ]
@@ -80,6 +76,7 @@ status_inline_keyboard = InlineKeyboardMarkup(
                     action_choice="change",
                 )
             ),
+
             InlineKeyboardButton(
                 text="🌄 Прикрепить фото",
                 callback_data=action_data.new(
@@ -87,6 +84,7 @@ status_inline_keyboard = InlineKeyboardMarkup(
                 )
             )
         ],
+
         [
             InlineKeyboardButton(
                 text="🪧 Статус",
@@ -95,6 +93,7 @@ status_inline_keyboard = InlineKeyboardMarkup(
                 )
             )
         ],
+
         [
             InlineKeyboardButton(
                 text="🏮 Назад",
@@ -118,3 +117,17 @@ cancel_keyboard = InlineKeyboardMarkup(
         ]
     ]
 )
+
+add_group_id = InlineKeyboardMarkup(
+    inline_keyboard=[
+        [
+            InlineKeyboardButton(
+                text="✍️ Добавить",
+                callback_data=add_group_id_data.new(
+                    group_id="add_group_id"
+                )
+            ),
+        ]
+    ]
+)
+

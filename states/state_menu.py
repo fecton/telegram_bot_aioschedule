@@ -7,3 +7,4 @@ class MemMenu(StatesGroup):
     set_action = State()
     set_photo = State()
     set_text = State()
+
