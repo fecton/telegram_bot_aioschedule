@@ -26,8 +26,10 @@ async def reset_groups(message: types.Message):
 
 @dp.message_handler(IsAdminPrivate(), commands="show")
 async def show_groups(message: types.Message):
-    all_groups = "\n".join(list(map(lambda x: "%s : %s" % x, DbCore().get_all_groups()))).title()
+    all_groups = DbCore().get_all_groups()
+
     if all_groups:
+        all_groups = "\n".join(list(map(lambda x: "%s : %s" % x, all_groups))).title()
         await message.answer("Список групп:\n" + all_groups)
     else:
         await message.answer("Ещё нету групп!")
