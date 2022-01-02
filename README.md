@@ -2,7 +2,7 @@
 
 ## Used libraries:
 > aiogram
-
+> 
 > aioschedule
 
 ## Installing modules:
@@ -13,6 +13,11 @@ pip3 install pytelegrambotapi aiogram aioschedule
 
 ## Commands:
 > /start
+
+> /set [id]
+> /reset - clear groups id
+> /show - show all set groups
+> /show - sent message only with text attached to days
 
 > /help
 <img src="images_readme/help.png">
