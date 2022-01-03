@@ -1,5 +1,4 @@
 from aiogram.dispatcher.storage import FSMContext
-from aiogram.types import chat
 from loader import dp, bot
 from aiogram import types
 from data.config import SUPER_USERS
@@ -9,6 +8,7 @@ from keyboard.inline.cb_data import add_group_id_data
 from data.functions import DbCore
 import re
 from sqlite3 import IntegrityError
+
 
 @dp.message_handler(IsThisBot(), content_types=types.ContentType.NEW_CHAT_MEMBERS)
 async def send_chat_id_to_admin(message: types.Message):
@@ -27,9 +27,8 @@ async def add_or_skip_group_id(call: types.CallbackQuery, callback_data: dict, s
         group_name = call.message.text[re.search(r"🔅 Название группы: ", call.message.text).end():call.message.text.find("\n")]
         group_id = -int(re.search(r"\d+", call.message.text).group())
         DbCore().insert_groups(group_name, group_id)
-        await call.answer("Группа успешно добавлена!")
+        await call.answer("✅ Группа успешно добавлена!")
     except IntegrityError:
-        await call.answer("Произошла ошибка")
+        await call.answer("🚫 Произошла ошибка")
 
     await call.message.edit_reply_markup()
-

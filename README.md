@@ -22,10 +22,7 @@ pip3 install pytelegrambotapi aiogram aioschedule
 > /help
 <img src="images_readme/help.png" width=400>
 
-> /show (in this situation we sent this command after that we added a bot to a group) old version
-<img src="images_readme/set_group_id.png" width=400>
-
-> /show NEW VERSION
+> /show
 <img src="images_readme/bot_added1.png" width=200>
 <img src="images_readme/bot_added2.png" width=200>
 <img src="images_readme/bot_added3.png" width=500>

@@ -108,7 +108,7 @@ async def get_text_to_change(message: types.Message, state: FSMContext):
     await MemMenu.next()
     await state.reset_state(with_data=True)
 
-
+# returns to day menu
 @dp.callback_query_handler(IsAdminPrivate(), action_data.filter(action_choice="go_back"), state=MemMenu.set_week_day)
 async def send_action_keyboard(call: types.CallbackQuery, state: FSMContext):
     await call.message.edit_text("Список дней:")

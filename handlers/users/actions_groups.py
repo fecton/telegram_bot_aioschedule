@@ -5,19 +5,6 @@ from aiogram import types
 from sqlite3 import IntegrityError
 
 
-@dp.message_handler(IsAdminPrivate(), commands="set")
-async def set_groups(message: types.Message):
-    groups = user_input(message, "/set").split(" ")
-    if groups != "":
-        groups = [i for i in groups if not i.strip(" ").isalpha() and len(i) > 5]
-        try:
-            DbCore().insert_groups(groups)
-        except IntegrityError:
-            await message.answer("Одна из групп уже записана!")
-        if groups:
-            await message.answer("Успешно добавлено!")
-
-
 @dp.message_handler(IsAdminPrivate(), commands="reset")
 async def reset_groups(message: types.Message):
     DbCore().clear_all_groups()
@@ -45,6 +32,10 @@ async def check_messages_for_days(message: types.Message):
             x = "❌"
         else:
             x = all_messages[day]
-        output_message += "🔰 "+(eng_day_to_rus(day)).title()+": " + x + "\n"
-
+        
+        output_message += "🔰 %s:%s%s\n" % (
+            eng_day_to_rus(day, short=True),
+            " "*3,
+            x
+        )
     await message.answer(output_message)
