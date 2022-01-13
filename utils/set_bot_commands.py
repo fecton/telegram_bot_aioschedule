@@ -6,7 +6,7 @@ async def set_default_commands(dp: Dispatcher):
         types.BotCommand("menu", "меню"),
         types.BotCommand("start", "старт"),
         types.BotCommand("help", "справка"),
-        types.BotCommand("show", "показать установленные ID групп"),
-        types.BotCommand("reset", "сбросить ID'и"),
+        types.BotCommand("show", "показать группы"),
+        types.BotCommand("reset", "сбросить группы"),
         types.BotCommand("status", "показать сообщения"),
     ])
